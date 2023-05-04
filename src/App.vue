@@ -30,7 +30,7 @@
 
 <template>
   <SearchBar @searchFilm="getApiFilm()"/>
-  <Main/>
+  <Main @nextprev="getApiFilm()"/>
 </template>
 
 <style lang="scss">

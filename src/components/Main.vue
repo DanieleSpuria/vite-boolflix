@@ -1,28 +1,45 @@
 <script>
   import Card from './partials/Card.vue';
+  import {store} from '../assets/js/store';
   export default {
    name: 'Main',
    
    components: {
     Card
+   },
+
+   data() {
+    return {
+      store
+    }
+   },
+
+   methods: {
+    nextPrev() {
+      store.page++;
+      this.$emit('nextprev')
+    }
    }
   }
 </script>
 
 <template>
-  <div class="row">
-    <Card/>
+  <div class="container">
+    <div class="row">
+      <Card/>
+    </div>
+  
+    <button>Prev</button>
+    <button @click="nextPrev()">Next</button>
   </div>
-
-  <button>Prev</button>
-  <button>Next</button>
 </template>
 
 <style lang="scss" scoped>
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: 0 auto;
+  .container {
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 </style>
