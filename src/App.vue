@@ -1,7 +1,8 @@
 <script>
   import SearchBar from './components/SearchBar.vue';
   import Main from './components/Main.vue';
-import axios from 'axios';
+  import axios from 'axios';
+  import {store} from './assets/js/store';
   export default {
    name: 'App',
    
@@ -10,11 +11,18 @@ import axios from 'axios';
     Main
    },
 
+   data() {
+    return {
+      store
+    }
+   },
+
    methods: {
     getApi() {
-      axios.get('https://api.themoviedb.org/3/search/movie?api_key=b35e5259fc80aa97841e519ada2e3d64&language=it-IT&query=matrix')
+      axios.get(store.api)
       .then(result => {
-        console.log(result.data);
+        store.listFilm = result.data.results;
+        console.log(store.listFilm);
       })
     }
    },
