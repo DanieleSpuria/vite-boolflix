@@ -12,7 +12,6 @@
    methods: {
     searchFilm() {
       this.$emit ('searchFilm')
-      store.valueFilm = ''
     }
    }
   }

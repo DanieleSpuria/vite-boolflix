@@ -22,6 +22,8 @@
       axios.get(`${store.api} ${store.valueFilm} &page=${store.page}`)
       .then(result => {
         store.listFilm = result.data.results;
+        console.log(`${store.api} ${store.valueFilm} &page=${store.page}`);
+        console.log(store.valueFilm);
       })
     }
    }
