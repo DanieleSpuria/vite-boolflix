@@ -10,8 +10,9 @@
    },
 
    methods: {
-    log() {
+    searchFilm() {
       console.log(this.store.valueFilm);
+      this.$emit ('searchFilm')
     }
    }
   }
@@ -23,7 +24,7 @@
       type="text"
       placeholder="Insert name film"
       v-model="store.valueFilm"
-      @keyup.enter="log()"
+      @keyup.enter="searchFilm()"
     >
     <button>Search</button>
   </div>

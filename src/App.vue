@@ -19,22 +19,18 @@
 
    methods: {
     getApi() {
-      axios.get(store.api)
+      axios.get(`${store.api} ${store.valueFilm}`)
       .then(result => {
         store.listFilm = result.data.results;
         console.log(store.listFilm);
       })
     }
-   },
-
-   mounted(){
-    this.getApi()
    }
   }
 </script>
 
 <template>
-  <SearchBar/>
+  <SearchBar @searchFilm="getApi()"/>
   <Main/>
 </template>
 
