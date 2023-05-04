@@ -15,8 +15,8 @@
    },
 
    methods: {
-    nextPrev() {
-      store.page++;
+    nextPrev(op) {
+      op;
       this.$emit('nextprev')
     }
    }
@@ -29,8 +29,14 @@
       <Card/>
     </div>
   
-    <button>Prev</button>
-    <button @click="nextPrev()">Next</button>
+    <button
+      v-if="store.page > 1"
+      @click="nextPrev(store.page--)"
+    >Prev</button>
+    <button
+      v-if="store.page != store.totalPage"
+      @click="nextPrev(store.page++)"
+    >Next</button>
   </div>
 </template>
 
