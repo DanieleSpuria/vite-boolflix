@@ -1,13 +1,21 @@
 <script>
+  import SearchBar from './components/SearchBar.vue';
+  import Main from './components/Main.vue';
   export default {
-   name: 'App' 
+   name: 'App',
+   
+   components: {
+    SearchBar,
+    Main
+   }
   }
 </script>
 
 <template>
-  
+  <SearchBar/>
+  <Main/>
 </template>
 
-<style>
+<style lang="scss">
 
 </style>
