@@ -13,6 +13,9 @@
   <div class="row">
     <Card/>
   </div>
+
+  <button>Prev</button>
+  <button>Next</button>
 </template>
 
 <style lang="scss" scoped>
