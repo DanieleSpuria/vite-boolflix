@@ -11,7 +11,6 @@
 
    methods: {
     searchFilm() {
-      console.log(this.store.valueFilm);
       this.$emit ('searchFilm')
       store.valueFilm = ''
     }
