@@ -1,3 +1,6 @@
+Booflix
+===
+
 **Milestone 0:**  
 Progettare la struttura del global state sulla linea degli esercizi svolti nei giorni precedenti.  
 
@@ -9,3 +12,8 @@ Vogliamo dopo la risposta dell’API visualizzare a schermo i seguenti valori pe
 - Titolo Originale  
 - Lingua  
 - Voto  
+
+## Sviluppo
+- markup per fare una searchbar, con input e bottone, e sotto un container in un cui poi andranno le card con le informazioni dei film
+- funzione che avvia la chiamata API e restituisce i risultati  
+
