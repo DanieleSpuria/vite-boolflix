@@ -11,6 +11,7 @@
 
    methods: {
     searchFilm() {
+      store.page = 1;
       this.$emit ('searchFilm')
     }
    }
