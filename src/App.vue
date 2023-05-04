@@ -18,7 +18,7 @@
    },
 
    methods: {
-    getApi() {
+    getApiFilm() {
       axios.get(`${store.api} ${store.valueFilm}`)
       .then(result => {
         store.listFilm = result.data.results;
@@ -30,7 +30,7 @@
 </script>
 
 <template>
-  <SearchBar @searchFilm="getApi()"/>
+  <SearchBar @searchFilm="getApiFilm()"/>
   <Main/>
 </template>
 

@@ -13,6 +13,7 @@
     searchFilm() {
       console.log(this.store.valueFilm);
       this.$emit ('searchFilm')
+      store.valueFilm = ''
     }
    }
   }
@@ -26,7 +27,7 @@
       v-model="store.valueFilm"
       @keyup.enter="searchFilm()"
     >
-    <button>Search</button>
+    <button @click="searchFilm()">Search</button>
   </div>
 </template>
 
