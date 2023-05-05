@@ -25,10 +25,15 @@
   <div class="search-bar">
     <input
       type="text"
-      placeholder="Insert film"
+      placeholder="Titoli"
       v-model="inputFilm"
       @keyup.enter="searchFilm()"
     >
+    <select>
+      <option value="">Seleziona</option>
+      <option value="">Film</option>
+      <option value="">SerieTv</option>
+    </select>
     <button @click="searchFilm()">Search</button>
   </div>
 </template>

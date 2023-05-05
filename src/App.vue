@@ -19,7 +19,7 @@
 
    methods: {
     getApiFilm() {
-      axios.get(`${store.api}${store.valueFilm}&page=${store.page}`)
+      axios.get(`${store.apiFilm}${store.valueFilm}&page=${store.page}`)
       .then(result => {
         store.listFilm = result.data.results;
         store.totalPage = result.data.total_pages;
