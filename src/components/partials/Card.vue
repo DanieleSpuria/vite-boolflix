@@ -7,6 +7,12 @@
       return {
         store
       }
+    },
+
+    methods: {
+      getImage(img) {
+        return new URL (`../../assets/img/${img}.png`, import.meta.url).href;
+      }
     }
   }
 </script>
@@ -20,8 +26,13 @@
     <div class="card">
       <h3>{{ card.title }}</h3>
       <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
-      <span>{{ card.original_language }}</span>
-      <span>{{ card.vote_average }}</span>
+      <img
+        v-if="getImage(card.original_language).includes(card.original_language)"
+        :src="getImage(card.original_language)"
+        :alt="card.original_language"
+      >
+      <span v-else>{{ card.original_language }}</span>
+      <span>{{ card.vote_average.toFixed(1) }}</span>
     </div>
  </div>
 </template>
@@ -34,6 +45,10 @@
     .card {
       text-align: center;
       border: 1px solid black;
+
+      img {
+        width: 12%;
+      }
     }
   }
 </style>
