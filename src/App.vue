@@ -37,7 +37,7 @@
 </script>
 
 <template>
-  <SearchBar @search="getApi(store.select)"/>
+  <SearchBar @search="getApi()"/>
   <Main @nextPrev="getApi()"/>
 </template>
 

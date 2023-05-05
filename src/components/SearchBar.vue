@@ -6,15 +6,18 @@
    data() {
     return {
       store,
-      input: ''
+      input: '',
+      viewSelect: ''
     }
    },
 
    methods: {
     search() {
       store.value = this.input;
+      store.select = this.viewSelect;
       store.page = 1;
-      this.$emit ('search')
+      this.$emit ('search');
+      this.viewSelect = '';
       this.input = ''
     }
    }
@@ -29,7 +32,7 @@
       v-model="input"
       @keyup.enter="search()"
     >
-    <select v-model="store.select">
+    <select v-model="viewSelect">
       <option value="">Seleziona</option>
       <option value="Movie">Film</option>
       <option value="Tv">SerieTv</option>
