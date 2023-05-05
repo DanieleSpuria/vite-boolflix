@@ -5,14 +5,17 @@
    
    data() {
     return {
-      store
+      store,
+      inputFilm: ''
     }
    },
 
    methods: {
     searchFilm() {
+      store.valueFilm = this.inputFilm;
       store.page = 1;
       this.$emit ('searchFilm')
+      this.inputFilm = ''
     }
    }
   }
@@ -23,7 +26,7 @@
     <input
       type="text"
       placeholder="Insert name film"
-      v-model="store.valueFilm"
+      v-model="inputFilm"
       @keyup.enter="searchFilm()"
     >
     <button @click="searchFilm()">Search</button>
