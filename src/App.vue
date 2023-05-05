@@ -18,23 +18,19 @@
    },
 
    methods: {
+    api(select) {
+      if (select === 'Movie') return store.api = store.Movie + store.value + '&page=' + store.page;
+      if (select === 'Tv') return store.api = store.Tv + store.value + '&page=' + store.page;
+    },
+    
     getApi() {
-      if (store.select === 'Movie') {
-        axios.get(`${store.Movie}${store.value}&page=${store.page}`)
-        .then(result => {
-          store.list = result.data.results;
-          store.totalPage = result.data.total_pages;
-          console.log(`${store.Movie}${store.value}&page=${store.page}`);
+      axios.get(this.api(store.select))
+      .then(result => {
+        store.list = result.data.results;
+        store.totalPage = result.data.total_pages;
         })
-      };
-      if (store.select === 'Tv') {
-        axios.get(`${store.Tv}${store.value}&page=${store.page}`)
-        .then(result => {
-          store.list = result.data.results;
-          store.totalPage = result.data.total_pages;
-          console.log(`${store.Tv}${store.value}&page=${store.page}`);
-        })
-      }
+      
+      
     }
    }
   }
