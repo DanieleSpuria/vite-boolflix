@@ -25,7 +25,7 @@
   <div class="search-bar">
     <input
       type="text"
-      placeholder="Insert name film"
+      placeholder="Insert film"
       v-model="inputFilm"
       @keyup.enter="searchFilm()"
     >
