@@ -1,5 +1,5 @@
 <script>
-  import SearchBar from './components/SearchBar.vue';
+  import Header from './components/Header.vue';
   import Main from './components/Main.vue';
   import axios from 'axios';
   import {store} from './assets/js/store';
@@ -7,7 +7,7 @@
    name: 'App',
    
    components: {
-    SearchBar,
+    Header,
     Main
    },
 
@@ -29,15 +29,13 @@
         store.list = result.data.results;
         store.totalPage = result.data.total_pages;
         })
-      
-      
     }
    }
   }
 </script>
 
 <template>
-  <SearchBar @search="getApi()"/>
+  <Header @search="getApi()"/>
   <Main @nextPrev="getApi()"/>
 </template>
 
