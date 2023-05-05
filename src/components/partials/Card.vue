@@ -26,23 +26,29 @@
     <div class="card">
       <img v-if="card.poster_path" :src="store.urlImg + 'w342' + card.poster_path" alt="poster">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
-      <h3 v-if="store.select === 'Movie'">{{ card.title }}</h3>
-      <h3 v-if="store.select === 'Tv'">{{ card.name}}</h3>
-      <h4
-        v-if="card.original_title != card.title && store.select === 'Movie'"
-      >{{ card.original_title }}</h4>
-      <h4
-        v-if="card.original_name != card.name && store.select === 'Tv'"
-      >{{ card.original_name }}</h4>
-      <img
-        class="img"
-        v-if="getImage(card.original_language).includes(card.original_language)"
-        :src="getImage(card.original_language)"
-        :alt="card.original_language"
-      >
-      <span v-else>{{ card.original_language }}</span>
-      <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
-      <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
+
+      <div class="hover">
+        <h3 v-if="store.select === 'Movie'">{{ card.title }}</h3>
+        <h3 v-if="store.select === 'Tv'">{{ card.name}}</h3>
+        <h4
+          v-if="card.original_title != card.title && store.select === 'Movie'"
+        >{{ card.original_title }}</h4>
+        <h4
+          v-if="card.original_name != card.name && store.select === 'Tv'"
+        >{{ card.original_name }}</h4>
+        <img
+          class="img"
+          v-if="getImage(card.original_language).includes(card.original_language)"
+          :src="getImage(card.original_language)"
+          :alt="card.original_language"
+        >
+        <span v-else>{{ card.original_language }}</span>
+        <div class="star">
+          <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
+          <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
+        </div>
+        <p>{{ card.overview }}</p>
+      </div>
     </div>
  </div>
 </template>
@@ -54,12 +60,34 @@
     padding: 10px;
 
     .card {
-      text-align: center;
+      position: relative;
       border: 1px solid black;
-      
 
-      .img {
-        width: 12%;
+
+      &:hover .hover{
+          display: flex;
+        }
+      
+      .hover {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position:absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 10px ;
+        color: white;
+        background-color: rgba(#000000, .7);
+        
+        .img {
+          width: 12%;
+        }
+
+        p {
+          text-align: justify;
+          overflow: scroll;
+        }
       }
     }
   }
