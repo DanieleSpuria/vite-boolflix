@@ -20,7 +20,7 @@
 <template>
   <div
     class="col"
-    v-for="(card, id) of store.listFilm"
+    v-for="(card, id) of store.list"
     :key="id"
   >
     <div class="card">

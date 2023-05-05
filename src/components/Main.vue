@@ -17,7 +17,7 @@
    methods: {
     nextPrev(op) {
       op;
-      this.$emit('nextprev')
+      this.$emit('nextPrev')
     }
    }
   }

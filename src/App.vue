@@ -18,10 +18,10 @@
    },
 
    methods: {
-    getApiFilm() {
-      axios.get(`${store.apiFilm}${store.valueFilm}&page=${store.page}`)
+    getApi() {
+      axios.get(`${store.apiMovie}${store.value}&page=${store.page}`)
       .then(result => {
-        store.listFilm = result.data.results;
+        store.list = result.data.results;
         store.totalPage = result.data.total_pages;
       })
     }
@@ -30,8 +30,8 @@
 </script>
 
 <template>
-  <SearchBar @searchFilm="getApiFilm()"/>
-  <Main @nextprev="getApiFilm()"/>
+  <SearchBar @search="getApi()"/>
+  <Main @nextPrev="getApi()"/>
 </template>
 
 <style lang="scss">

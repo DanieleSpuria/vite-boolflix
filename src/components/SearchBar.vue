@@ -6,16 +6,16 @@
    data() {
     return {
       store,
-      inputFilm: ''
+      input: ''
     }
    },
 
    methods: {
-    searchFilm() {
-      store.valueFilm = this.inputFilm;
+    search() {
+      store.value = this.input;
       store.page = 1;
-      this.$emit ('searchFilm')
-      this.inputFilm = ''
+      this.$emit ('search')
+      this.input = ''
     }
    }
   }
@@ -26,15 +26,15 @@
     <input
       type="text"
       placeholder="Titoli"
-      v-model="inputFilm"
-      @keyup.enter="searchFilm()"
+      v-model="input"
+      @keyup.enter="search()"
     >
-    <select>
+    <select v-model="store.select">
       <option value="">Seleziona</option>
-      <option value="">Film</option>
-      <option value="">SerieTv</option>
+      <option value="Movie">Film</option>
+      <option value="Tv">SerieTv</option>
     </select>
-    <button @click="searchFilm()">Search</button>
+    <button @click="search()">Search</button>
   </div>
 </template>
 
