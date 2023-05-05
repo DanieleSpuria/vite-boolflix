@@ -24,7 +24,7 @@
     :key="id"
   >
     <div class="card">
-      <img v-if="card.poster_path" :src="store.urlImg + 'w780' + card.poster_path" alt="poster">
+      <img v-if="card.poster_path" :src="store.urlImg + 'w342' + card.poster_path" alt="poster">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
       <h3 v-if="store.select === 'Movie'">{{ card.title }}</h3>
       <h3 v-if="store.select === 'Tv'">{{ card.name}}</h3>
