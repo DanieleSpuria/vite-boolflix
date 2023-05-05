@@ -24,6 +24,8 @@
     :key="id"
   >
     <div class="card">
+      <img v-if="card.poster_path" :src="store.urlImg + 'w780' + card.poster_path" alt="poster">
+      <img v-else :src="getImage('no-photo')" alt="no-photo">
       <h3 v-if="store.select === 'Movie'">{{ card.title }}</h3>
       <h3 v-if="store.select === 'Tv'">{{ card.name}}</h3>
       <h4
@@ -33,6 +35,7 @@
         v-if="card.original_name != card.name && store.select === 'Tv'"
       >{{ card.original_name }}</h4>
       <img
+        class="img"
         v-if="getImage(card.original_language).includes(card.original_language)"
         :src="getImage(card.original_language)"
         :alt="card.original_language"
@@ -51,8 +54,9 @@
     .card {
       text-align: center;
       border: 1px solid black;
+      
 
-      img {
+      .img {
         width: 12%;
       }
     }
