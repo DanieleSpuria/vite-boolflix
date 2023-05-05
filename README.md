@@ -40,6 +40,6 @@ Arrotondiamo sempre per eccesso all’unità successiva, non gestiamo icone mezz
 
 ## Sviluppo
 - immagine con poster dei risultati o immagine non disponibile 
-- dividere per due il voto medio, renderlo intero col fixed() e arrotondare con Math.ceil() e associarlo alle icone star con un ciclo
+- dividere per due il voto medio, renderlo intero col fixed() e arrotondare con Math.ceil() e associarlo alle icone star con un ciclo 
 
 

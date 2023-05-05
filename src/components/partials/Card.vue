@@ -1,11 +1,11 @@
 <script>
-  import {store} from '../../assets/js/store'
+  import {store} from '../../assets/js/store';
   export default {
-    name: 'Card',
+    name: 'Card', 
 
     data() {
       return {
-        store
+        store,
       }
     },
 
@@ -41,7 +41,8 @@
         :alt="card.original_language"
       >
       <span v-else>{{ card.original_language }}</span>
-      <span>{{ card.vote_average.toFixed(1) }}</span>
+      <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
+      <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
     </div>
  </div>
 </template>
