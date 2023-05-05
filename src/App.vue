@@ -28,6 +28,7 @@
       .then(result => {
         store.list = result.data.results;
         store.totalPage = result.data.total_pages;
+        store.load = true
       })
     }
    }

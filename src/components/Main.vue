@@ -38,7 +38,7 @@
 
     <div class="btn">
       <button
-        v-if="store.page != store.totalPage"
+        v-if="store.page != store.totalPage && store.load"
         @click="nextPrev(store.page++)"
       >Next</button>
     </div>
@@ -48,8 +48,8 @@
 <style lang="scss" scoped>
   main {
     display: flex;
-    height: 90vh;
-    padding-top: 40px;
+    height: 88vh;
+    padding-top: 20px;
 
     .btn {
       display: flex;
