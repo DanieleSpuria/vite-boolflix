@@ -24,8 +24,14 @@
     :key="id"
   >
     <div class="card">
-      <h3>{{ card.title }}</h3>
-      <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
+      <h3 v-if="store.select === 'Movie'">{{ card.title }}</h3>
+      <h3 v-if="store.select === 'Tv'">{{ card.name}}</h3>
+      <h4
+        v-if="card.original_title != card.title && store.select === 'Movie'"
+      >{{ card.original_title }}</h4>
+      <h4
+        v-if="card.original_name != card.name && store.select === 'Tv'"
+      >{{ card.original_name }}</h4>
       <img
         v-if="getImage(card.original_language).includes(card.original_language)"
         :src="getImage(card.original_language)"
