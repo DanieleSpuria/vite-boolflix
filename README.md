@@ -38,4 +38,8 @@ https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png
 Trasformiamo poi il voto da 1 a 10 decimale in un numero intero da 1 a 5, così da permetterci di stampare a schermo un numero di stelle piene che vanno da 1 a 5, lasciando le restanti vuote (troviamo le icone in FontAwesome).  
 Arrotondiamo sempre per eccesso all’unità successiva, non gestiamo icone mezze piene (o mezze vuote :P).
 
+## Sviluppo
+- immagine con poster dei risultati o immagine non disponibile 
+- dividere per due il voto medio, renderlo intero col fixed() e arrotondare con Math.ceil() e associarlo alle icone star con un ciclo
+
 

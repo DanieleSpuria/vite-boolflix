@@ -9,5 +9,6 @@ export const store = reactive({
   totalPage: 0,
   list: [],
   value: '',
-  select: ''
+  select: '',
+  load: false
 })

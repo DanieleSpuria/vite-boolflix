@@ -50,6 +50,7 @@
 
   .col {
     width: calc(100% / 5);
+    padding: 10px;
 
     .card {
       text-align: center;
