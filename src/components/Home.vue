@@ -22,7 +22,11 @@
     methods: {
       getImage(img) {
         return new URL (`../assets/img/${img}.png`, import.meta.url).href;
-      }
+      },
+
+      randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      },
     }
   }
 </script>
@@ -31,12 +35,12 @@
   <div class="home">
     <div class="container">
       <div class="jumbotron">
-        <img v-if="store.homePop[0].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[0].backdrop_path" alt="backdrop">
+        <img v-if="store.homePop[randomNumber(0, store.homePop.length)].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[randomNumber(0, store.homePop.length)].backdrop_path" alt="backdrop">
         <img v-else :src="getImage('no-photo')" alt="no-photo">
 
         <div class="hover-jumbo">
-         <h3>{{ store.homePop[0].title }}</h3>
-         <h4 v-if="store.homePop[0].original_title != store.homePop[0].title">{{ store.homePop[0].original_title }}</h4>
+         <h3>{{ store.homePop[randomNumber(0, store.homePop.length)].title }}</h3>
+         <h4 v-if="store.homePop[randomNumber(0, store.homePop.length)].original_title != store.homePop[randomNumber(0, store.homePop.length)].title">{{ store.homePop[randomNumber(0, store.homePop.length)].original_title }}</h4>
        </div>
       </div>
 
@@ -261,15 +265,14 @@
 
     .jumbotron {
       position: relative;
+      height: 450px;
+      border-radius: 5px;
+      overflow: hidden;
 
       .hover-jumbo {
         position: absolute;
         bottom: 2%;
         left: 1%;
-
-        img {
-          width: 12%  ;
-        }
       }
     }
 
