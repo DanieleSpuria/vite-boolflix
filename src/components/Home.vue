@@ -15,7 +15,8 @@
     
     data() {
       return {
-        store
+        store,
+        random: 0
       }
     },
 
@@ -24,9 +25,13 @@
         return new URL (`../assets/img/${img}.png`, import.meta.url).href;
       },
 
-      randomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
+      randomNumber() {
+        this.random = Math.floor(Math.random() * (store.homePop.length + 1));
       },
+    },
+
+    mounted() {
+      this.randomNumber()
     }
   }
 </script>
@@ -35,11 +40,11 @@
   <div class="home">
     <div class="container">
       <div class="jumbotron">
-        <img v-if="store.homePop[randomNumber(0, store.homePop.length)].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[randomNumber(0, store.homePop.length)].backdrop_path" alt="backdrop">
+        <img v-if="store.homePop[random].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[random].backdrop_path" alt="backdrop">
         <img v-else :src="getImage('no-photo')" alt="no-photo">
 
         <div class="hover-jumbo">
-          <h1>{{ store.homePop[randomNumber(0, store.homePop.length)].title }}</h1>
+          <h1>{{ store.homePop[random].title }}</h1>
         </div>
       </div>
 
