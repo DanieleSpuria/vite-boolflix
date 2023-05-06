@@ -16,5 +16,9 @@ export const store = reactive({
   load: false,
   search: false,
   homePop: [],
-  home1: []
+  home1: [],
+  home2: [],
+  home3: [],
+  home4: [],
+  home5: [],
 })

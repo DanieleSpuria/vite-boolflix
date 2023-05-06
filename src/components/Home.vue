@@ -54,6 +54,7 @@
                     <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
                     <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
                   </div>
+                  <p>{{ card.overview }}</p>
                 </div>
               </div>
             </div>
@@ -87,6 +88,146 @@
                     <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
                     <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
                   </div>
+                  <p>{{ card.overview }}</p>
+                </div>
+              </div>
+            </div>
+           </SwiperSlide>
+         </Swiper>
+        </div>
+      </div>
+
+
+
+      <div class="box">
+        <h3>Investigativo</h3>
+        <div class="row"> 
+          <Swiper :slidesPerView="5" :spaceBetween="10">
+           <SwiperSlide v-for="(card, id) in store.home2" :key="id">
+            <div class="col">
+              <div class="card">
+                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
+                <img v-else :src="getImage('no-photo')" alt="no-photo">
+
+                <div class="hover">
+                  <h3>{{ card.title }}</h3>
+                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
+                  <img
+                    class="img"
+                    v-if="getImage(card.original_language).includes(card.original_language)"
+                    :src="getImage(card.original_language)"
+                    :alt="card.original_language"
+                  >
+                  <span v-else>{{ card.original_language }}</span>
+                  <div class="star">
+                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
+                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
+                  </div>
+                  <p>{{ card.overview }}</p>
+                </div>
+              </div>
+            </div>
+           </SwiperSlide>
+         </Swiper>
+        </div>
+      </div>
+
+
+      <div class="box">
+        <h3>Documentari</h3>
+        <div class="row"> 
+          <Swiper :slidesPerView="5" :spaceBetween="10">
+           <SwiperSlide v-for="(card, id) in store.home3" :key="id">
+            <div class="col">
+              <div class="card">
+                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
+                <img v-else :src="getImage('no-photo')" alt="no-photo">
+
+                <div class="hover">
+                  <h3>{{ card.title }}</h3>
+                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
+                  <img
+                    class="img"
+                    v-if="getImage(card.original_language).includes(card.original_language)"
+                    :src="getImage(card.original_language)"
+                    :alt="card.original_language"
+                  >
+                  <span v-else>{{ card.original_language }}</span>
+                  <div class="star">
+                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
+                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
+                  </div>
+                  <p>{{ card.overview }}</p>
+                </div>
+              </div>
+            </div>
+           </SwiperSlide>
+         </Swiper>
+        </div>
+      </div>
+
+
+
+      <div class="box">
+        <h3>Horror</h3>
+        <div class="row"> 
+          <Swiper :slidesPerView="5" :spaceBetween="10">
+           <SwiperSlide v-for="(card, id) in store.home4" :key="id">
+            <div class="col">
+              <div class="card">
+                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
+                <img v-else :src="getImage('no-photo')" alt="no-photo">
+
+                <div class="hover">
+                  <h3>{{ card.title }}</h3>
+                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
+                  <img
+                    class="img"
+                    v-if="getImage(card.original_language).includes(card.original_language)"
+                    :src="getImage(card.original_language)"
+                    :alt="card.original_language"
+                  >
+                  <span v-else>{{ card.original_language }}</span>
+                  <div class="star">
+                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
+                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
+                  </div>
+                  <p>{{ card.overview }}</p>
+                </div>
+              </div>
+            </div>
+           </SwiperSlide>
+         </Swiper>
+        </div>
+      </div>
+
+
+
+      <div class="box">
+        <h3>Fantasy</h3>
+        <div class="row"> 
+          <Swiper :slidesPerView="5" :spaceBetween="10">
+           <SwiperSlide v-for="(card, id) in store.home5" :key="id">
+            <div class="col">
+              <div class="card">
+                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
+                <img v-else :src="getImage('no-photo')" alt="no-photo">
+
+                <div class="hover">
+                  <h3>{{ card.title }}</h3>
+                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
+                  <img
+                    class="img"
+                    v-if="getImage(card.original_language).includes(card.original_language)"
+                    :src="getImage(card.original_language)"
+                    :alt="card.original_language"
+                  >
+                  <span v-else>{{ card.original_language }}</span>
+                  <div class="star">
+                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
+                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
+                  </div>
+                  <p>{{ card.overview }}</p>
                 </div>
               </div>
             </div>
@@ -103,6 +244,7 @@
   .home {
     margin-top: 100px;
     padding: 0 10px;
+    padding-bottom: 20px;
     color: white;
 
     .box {

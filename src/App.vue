@@ -46,6 +46,27 @@
         .then(result => {
           store.home1 = result.data.results;
         })
+
+        axios.get(store.genre + 80 + '&page=' + this.randomNumber(1, 500)) 
+        .then(result => {
+          store.home2 = result.data.results;
+        })
+
+        axios.get(store.genre + 99 + '&page=' + this.randomNumber(1, 500)) 
+        .then(result => {
+          store.home3 = result.data.results;
+        })
+
+        axios.get(store.genre + 27 + '&page=' + this.randomNumber(1, 500)) 
+        .then(result => {
+          store.home4 = result.data.results;
+        })
+
+        axios.get(store.genre + 14 + '&page=' + this.randomNumber(1, 500)) 
+        .then(result => {
+          store.home5 = result.data.results;
+        })
+        store.load = true;
       },
 
       randomNumber(min, max) {
@@ -61,7 +82,7 @@
 
 <template>
   <Header @search="getApi()" @reset="homeApi()"/>
-  <Home v-if="!store.search"/>
+  <Home v-if="!store.search && store.load"/>
   <Main v-else @nextPrev="getApi()"/>
 </template>
 
