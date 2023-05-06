@@ -5,7 +5,7 @@ export const store = reactive({
   tv: 'https://api.themoviedb.org/3/search/tv?api_key=b35e5259fc80aa97841e519ada2e3d64&language=it-IT&query=',
   list: 'https://api.themoviedb.org/3/genre/movie/list?api_key=b35e5259fc80aa97841e519ada2e3d64',
   pop: 'https://api.themoviedb.org/3/movie/popular?api_key=b35e5259fc80aa97841e519ada2e3d64&language=it-IT',
-  genre: 'https://api.themoviedb.org/3/discover/movie?api_key=b35e5259fc80aa97841e519ada2e3d64&language=it-IT&with_genres=28',
+  genre: 'https://api.themoviedb.org/3/discover/movie?api_key=b35e5259fc80aa97841e519ada2e3d64&language=it-IT&with_genres=',
   api: '',
   urlImg: 'https://image.tmdb.org/t/p/',
   page: 1,
@@ -14,5 +14,7 @@ export const store = reactive({
   value: '',
   select: '',
   load: false,
-  homePop: []
+  search: false,
+  homePop: [],
+  home1: []
 })

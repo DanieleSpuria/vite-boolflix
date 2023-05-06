@@ -30,17 +30,27 @@
         .then(result => {
           store.list = result.data.results;
           store.totalPage = result.data.total_pages;
-          store.load = true
+          store.load = true;
+          store.search = true
         })
       },
 
       homeApi() {
-        axios.get(store.pop)
+        store.search = false;
+        axios.get(store.pop + '&page=' + this.randomNumber(1, 500))
         .then(result => {
           store.homePop = result.data.results;
-          console.log(store.homePop);
         })
-      }
+
+        axios.get(store.genre + 878 + '&page=' + this.randomNumber(1, 500)) 
+        .then(result => {
+          store.home1 = result.data.results;
+        })
+      },
+
+      randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      },
     },
 
     mounted() {
@@ -50,9 +60,9 @@
 </script>
 
 <template>
-  <Header @search="getApi()"/>
-  <Home/>
-  <!-- <Main @nextPrev="getApi()"/> -->
+  <Header @search="getApi()" @reset="homeApi()"/>
+  <Home v-if="!store.search"/>
+  <Main v-else @nextPrev="getApi()"/>
 </template>
 
 <style lang="scss">

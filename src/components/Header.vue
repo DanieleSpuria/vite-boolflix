@@ -27,7 +27,7 @@
 <template>
   <header>
     <div class="container">
-      <img src="../assets/img/logo-boolflix.png" alt="logo">
+      <img @click="$emit ('reset')" src="../assets/img/logo-boolflix.png" alt="logo">
       <div class="search-bar">
         <select v-model="viewSelect">
           <option value="">Seleziona</option>
@@ -57,17 +57,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 10px;
+      padding: 20px 5px;
     }
 
     img {
       width: 15%;
+      cursor: pointer;
     }
 
     select,
     input {
       padding: 10px;
       margin-left: 2px;
+      cursor: pointer;
     }
   }
 </style>

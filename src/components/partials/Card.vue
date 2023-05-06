@@ -24,7 +24,7 @@
     :key="id"
   >
     <div class="card">
-      <img v-if="card.poster_path" :src="store.urlImg + 'w342' + card.poster_path" alt="poster">
+      <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="poster">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
 
       <div class="hover">
@@ -57,11 +57,13 @@
 
   .col {
     width: calc(100% / 5);
-    padding: 10px;
+    padding: 20px 5px;
 
     .card {
       position: relative;
-      border: 1px solid black;
+      max-height: 155px;
+      overflow: hidden;
+      border-radius: 5px;
       cursor: pointer;
 
       &:hover .hover{
@@ -75,6 +77,7 @@
         position:absolute;
         top: 0;
         left: 0;
+        width: 100%;
         height: 100%;
         padding: 10px ;
         color: white;
