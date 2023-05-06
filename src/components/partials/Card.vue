@@ -28,13 +28,13 @@
       <img v-else :src="getImage('no-photo')" alt="no-photo">
 
       <div class="hover">
-        <h3 v-if="store.select === 'Movie'">{{ card.title }}</h3>
-        <h3 v-if="store.select === 'Tv'">{{ card.name}}</h3>
+        <h3 v-if="store.select === 'movie'">{{ card.title }}</h3>
+        <h3 v-if="store.select === 'tv'">{{ card.name}}</h3>
         <h4
-          v-if="card.original_title != card.title && store.select === 'Movie'"
+          v-if="card.original_title != card.title && store.select === 'movie'"
         >{{ card.original_title }}</h4>
         <h4
-          v-if="card.original_name != card.name && store.select === 'Tv'"
+          v-if="card.original_name != card.name && store.select === 'tv'"
         >{{ card.original_name }}</h4>
         <img
           class="img"
@@ -62,7 +62,7 @@
     .card {
       position: relative;
       border: 1px solid black;
-
+      cursor: pointer;
 
       &:hover .hover{
           display: flex;

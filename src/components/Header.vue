@@ -31,8 +31,8 @@
       <div class="search-bar">
         <select v-model="viewSelect">
           <option value="">Seleziona</option>
-          <option value="Movie">Film</option>
-          <option value="Tv">SerieTv</option>
+          <option value="movie">Film</option>
+          <option value="tv">SerieTv</option>
         </select>
         <input
           type="text"
@@ -40,7 +40,6 @@
           v-model="input"
           @keyup.enter="search()"
         >
-        <!-- <button @click="search()">Search</button> -->
       </div>
     </div>
   </header>
@@ -48,16 +47,27 @@
 
 <style lang="scss" scoped>
   header {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    background-color: #141414;
 
     .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 20px;
+      padding: 20px 10px;
     }
 
     img {
       width: 15%;
+    }
+
+    select,
+    input {
+      padding: 10px;
+      margin-left: 2px;
     }
   }
 </style>
