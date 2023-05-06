@@ -30,6 +30,18 @@
 <template>
   <div class="home">
     <div class="container">
+      <div class="jumbotron">
+        <img v-if="store.homePop[0].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[0].backdrop_path" alt="backdrop">
+        <img v-else :src="getImage('no-photo')" alt="no-photo">
+
+        <div class="hover-jumbo">
+         <h3>{{ store.homePop[0].title }}</h3>
+         <h4 v-if="store.homePop[0].original_title != store.homePop[0].title">{{ store.homePop[0].original_title }}</h4>
+       </div>
+      </div>
+
+
+
       <div class="box">
         <h3>Popolari</h3>
         <div class="row"> 
@@ -246,6 +258,20 @@
     padding: 0 10px;
     padding-bottom: 20px;
     color: white;
+
+    .jumbotron {
+      position: relative;
+
+      .hover-jumbo {
+        position: absolute;
+        bottom: 2%;
+        left: 1%;
+
+        img {
+          width: 12%  ;
+        }
+      }
+    }
 
     .box {
       margin-top: 20px;
