@@ -39,9 +39,8 @@
         <img v-else :src="getImage('no-photo')" alt="no-photo">
 
         <div class="hover-jumbo">
-         <h3>{{ store.homePop[randomNumber(0, store.homePop.length)].title }}</h3>
-         <h4 v-if="store.homePop[randomNumber(0, store.homePop.length)].original_title != store.homePop[randomNumber(0, store.homePop.length)].title">{{ store.homePop[randomNumber(0, store.homePop.length)].original_title }}</h4>
-       </div>
+          <h1>{{ store.homePop[randomNumber(0, store.homePop.length)].title }}</h1>
+        </div>
       </div>
 
 
@@ -78,6 +77,7 @@
          </Swiper>
         </div>
       </div>
+
 
 
       <div class="box">
@@ -147,6 +147,7 @@
          </Swiper>
         </div>
       </div>
+
 
 
       <div class="box">
@@ -319,8 +320,7 @@
                   text-align: justify;
                   overflow: scroll;
                 }
-              
-            }         
+              }         
           }
         }
       }
