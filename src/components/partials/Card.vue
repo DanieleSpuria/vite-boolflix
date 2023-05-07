@@ -1,7 +1,12 @@
 <script>
   import {store} from '../../assets/js/store';
+  import ClickCard from './ClickCard.vue';
   export default {
     name: 'Card', 
+
+    components: {
+      ClickCard
+    },
 
     data() {
       return {
@@ -12,18 +17,28 @@
     methods: {
       getImage(img) {
         return new URL (`../../assets/img/${img}.png`, import.meta.url).href;
+      },
+
+      click(c) {
+        store.selectCard = c;
+        store.clickCard = true;
       }
     }
   }
 </script>
 
 <template>
+  <ClickCard :card="store.selectCard" v-if="store.clickCard"   @keyup.esc="store.clickCard = false"/>
+
+
   <div
     class="col"
     v-for="(card, id) of store.list"
     :key="id"
   >
-    <div class="card">
+
+
+    <div class="card" @click="click(card)">
       <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="poster">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
 

@@ -21,7 +21,8 @@ export const store = reactive({
   home3: [],
   home4: [],
   home5: [],
-  clickCard: false
+  clickCard: false,
+  selectCard: []
 
   // home: {
   //   home1: {

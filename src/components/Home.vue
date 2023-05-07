@@ -29,8 +29,14 @@
 
       randomNumber() {
         this.random = Math.floor(Math.random() * (store.homePop.length + 1));
-      }
+      },
+
+      click(c) {
+        store.selectCard = c;
+        store.clickCard = true;
+      },
     },
+
 
     mounted() {
       this.randomNumber()
@@ -42,9 +48,9 @@
   <div class="home">
     <div class="container">
 
-      <ClickCard :card="store.homePop[random]" v-if="store.clickCard"   @keyup.esc="store.clickCard = false"/>
+      <ClickCard :card="store.selectCard" v-if="store.clickCard" @keyup.esc="store.clickCard = false"/>
 
-      <div class="jumbotron"  @click="store.clickCard = true">
+      <div class="jumbotron"  @click="click(store.homePop[random])">
         <img v-if="store.homePop[random].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[random].backdrop_path" alt="backdrop">
         <img v-else :src="getImage('no-photo')" alt="no-photo">
 
@@ -60,7 +66,7 @@
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
            <SwiperSlide v-for="(card, id) in store.homePop" :key="id">
-            <div class="col">
+            <div class="col" @click="click(card)">
               <div class="card">
                 <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
@@ -95,7 +101,7 @@
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
            <SwiperSlide v-for="(card, id) in store.home1" :key="id">
-            <div class="col">
+            <div class="col" @click="click(card)">
               <div class="card">
                 <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
@@ -130,7 +136,7 @@
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
            <SwiperSlide v-for="(card, id) in store.home2" :key="id">
-            <div class="col">
+            <div class="col" @click="click(card)">
               <div class="card">
                 <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
@@ -165,7 +171,7 @@
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
            <SwiperSlide v-for="(card, id) in store.home3" :key="id">
-            <div class="col">
+            <div class="col" @click="click(card)">
               <div class="card">
                 <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
@@ -200,7 +206,7 @@
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
            <SwiperSlide v-for="(card, id) in store.home4" :key="id">
-            <div class="col">
+            <div class="col" @click="click(card)">
               <div class="card">
                 <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
@@ -235,7 +241,7 @@
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
            <SwiperSlide v-for="(card, id) in store.home5" :key="id">
-            <div class="col">
+            <div class="col" @click="click(card)">
               <div class="card">
                 <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
