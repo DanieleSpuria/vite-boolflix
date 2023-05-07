@@ -21,4 +21,28 @@ export const store = reactive({
   home3: [],
   home4: [],
   home5: [],
+  clickCard: false
+
+  // home: {
+  //   home1: {
+  //     genre: 878,
+  //     list: []
+  //   },
+  //   home: {
+  //     genre: 80,
+  //     list: []
+  //   },
+  //   home3: {
+  //     genre: 99,
+  //     list: []
+  //   },
+  //   home4: {
+  //     genre: 27,
+  //     list: []
+  //   },
+  //   home5: {
+  //     genre: 14,
+  //     list: []
+  //   }
+  // }
 })

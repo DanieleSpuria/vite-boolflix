@@ -66,6 +66,17 @@
         .then(result => {
           store.home5 = result.data.results;
         })
+
+
+        // store.home.forEach(n => {
+        //   axios.get(store.genre + n.genre + '&page=' + this.randomNumber(1, 500)) 
+        //     .then(result => {
+        //     n.list = result.data.results;
+        //     console.log(store.home);
+        //   })
+        // })
+
+
         store.load = true;
       },
 

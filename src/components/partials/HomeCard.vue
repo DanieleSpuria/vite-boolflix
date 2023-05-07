@@ -49,6 +49,5 @@
   .col {
     display: flex;
     width: calc(100% / 5);
-  
   }
 </style>

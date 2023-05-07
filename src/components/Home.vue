@@ -1,5 +1,6 @@
 <script>
   import HomeCard from './partials/HomeCard.vue';
+  import ClickCard from './partials/ClickCard.vue'
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   import 'swiper/swiper-bundle.css'
   import {store} from '../assets/js/store';
@@ -9,6 +10,7 @@
 
     components: {
       HomeCard,
+      ClickCard,
       Swiper,
       SwiperSlide
     },
@@ -27,7 +29,7 @@
 
       randomNumber() {
         this.random = Math.floor(Math.random() * (store.homePop.length + 1));
-      },
+      }
     },
 
     mounted() {
@@ -39,7 +41,10 @@
 <template>
   <div class="home">
     <div class="container">
-      <div class="jumbotron">
+
+      <ClickCard :card="store.homePop[random]" v-if="store.clickCard"   @keyup.esc="store.clickCard = false"/>
+
+      <div class="jumbotron"  @click="store.clickCard = true">
         <img v-if="store.homePop[random].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[random].backdrop_path" alt="backdrop">
         <img v-else :src="getImage('no-photo')" alt="no-photo">
 
@@ -274,6 +279,7 @@
       height: 450px;
       border-radius: 5px;
       overflow: hidden;
+      cursor: pointer;
 
       .hover-jumbo {
         position: absolute;
