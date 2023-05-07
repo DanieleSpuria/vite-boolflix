@@ -23,9 +23,15 @@
   }
 </script>
 
+
+
+
+
+
+
+
 <template>
   <main>
-
     <span v-if="store.list.length === 0">Non è stato ottenuto nessun risultato</span>
     <!-- <span v-else-if="store.value === ''">Non è stato ottenuto nessun risultato!!!!</span> -->
 
@@ -54,6 +60,13 @@
     </div>
   </main>
 </template>
+
+
+
+
+
+
+
 
 <style lang="scss" scoped>
   main {
@@ -88,7 +101,7 @@
   
           &:hover {
           color: #db202c;
-        }
+          }
         }
       }
   

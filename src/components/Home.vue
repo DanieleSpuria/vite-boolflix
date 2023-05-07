@@ -43,6 +43,13 @@
   }
 </script>
 
+
+
+
+
+
+
+
 <template>
   <div class="home">
     <div class="jumbotron"  @click="click(store.homePop[random])">
@@ -57,7 +64,7 @@
 
     <div class="container">
       <div class="box">
-        <h3>Popolari</h3>
+        <h3 @click="$emit ('pop')">Popolari</h3>
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
            <SwiperSlide v-for="(card, id) in store.homePop" :key="id">
@@ -77,120 +84,39 @@
       </div>
 
 
+      <div class="genre" v-for="(genre, id) in store.homeGenre" :key="id">
+        <div class="box">
+          <h3>{{id}}</h3>
+          <div class="row"> 
+            <Swiper :slidesPerView="5" :spaceBetween="10">
+             <SwiperSlide v-for="(card, id) in genre" :key="id">
+              <div class="col" @click="click(card)">
+                <div class="card">
+                  <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
+                  <img v-else :src="getImage('no-photo')" alt="no-photo">
 
-      <div class="box">
-        <h3>Fantascienza</h3>
-        <div class="row"> 
-          <Swiper :slidesPerView="5" :spaceBetween="10">
-           <SwiperSlide v-for="(card, id) in store.home1" :key="id">
-            <div class="col" @click="click(card)">
-              <div class="card">
-                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
-                <img v-else :src="getImage('no-photo')" alt="no-photo">
-
-                <div class="hover">
-                  <h4>{{ card.title }}</h4>
+                  <div class="hover">
+                    <h4>{{ card.title }}</h4>
+                  </div>
                 </div>
               </div>
-            </div>
-           </SwiperSlide>
-         </Swiper>
-        </div>
-      </div>
-
-
-
-      <div class="box">
-        <h3>Investigativo</h3>
-        <div class="row"> 
-          <Swiper :slidesPerView="5" :spaceBetween="10">
-           <SwiperSlide v-for="(card, id) in store.home2" :key="id">
-            <div class="col" @click="click(card)">
-              <div class="card">
-                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
-                <img v-else :src="getImage('no-photo')" alt="no-photo">
-
-                <div class="hover">
-                  <h4>{{ card.title }}</h4>
-                </div>
-              </div>
-            </div>
-           </SwiperSlide>
-         </Swiper>
-        </div>
-      </div>
-
-
-
-      <div class="box">
-        <h3>Documentari</h3>
-        <div class="row"> 
-          <Swiper :slidesPerView="5" :spaceBetween="10">
-           <SwiperSlide v-for="(card, id) in store.home3" :key="id">
-            <div class="col" @click="click(card)">
-              <div class="card">
-                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
-                <img v-else :src="getImage('no-photo')" alt="no-photo">
-
-                <div class="hover">
-                  <h4>{{ card.title }}</h4>
-                </div>
-              </div>
-            </div>
-           </SwiperSlide>
-         </Swiper>
-        </div>
-      </div>
-
-
-
-      <div class="box">
-        <h3>Horror</h3>
-        <div class="row"> 
-          <Swiper :slidesPerView="5" :spaceBetween="10">
-           <SwiperSlide v-for="(card, id) in store.home4" :key="id">
-            <div class="col" @click="click(card)">
-              <div class="card">
-                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
-                <img v-else :src="getImage('no-photo')" alt="no-photo">
-
-                <div class="hover">
-                  <h4>{{ card.title }}</h4>
-                </div>
-              </div>
-            </div>
-           </SwiperSlide>
-         </Swiper>
-        </div>
-      </div>
-
-
-
-      <div class="box">
-        <h3>Fantasy</h3>
-        <div class="row"> 
-          <Swiper :slidesPerView="5" :spaceBetween="10">
-           <SwiperSlide v-for="(card, id) in store.home5" :key="id">
-            <div class="col" @click="click(card)">
-              <div class="card">
-                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
-                <img v-else :src="getImage('no-photo')" alt="no-photo">
-
-                <div class="hover">
-                  <h4>{{ card.title }}</h4>
-                </div>
-              </div>
-            </div>
-           </SwiperSlide>
-         </Swiper>
+             </SwiperSlide>
+           </Swiper>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
 
+
+
+
+
+
+
+<style lang="scss" scoped>
   .home {
     padding-bottom: 40px;
     color: white;
@@ -214,6 +140,7 @@
 
       h3 {
           margin-bottom: 10px;
+          cursor: pointer;
         }
 
       .row {

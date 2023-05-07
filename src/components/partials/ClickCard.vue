@@ -21,6 +21,13 @@
   }
 </script>
 
+
+
+
+
+
+
+
 <template>
   <div class="overlay">
     <div class="cover">
@@ -59,8 +66,14 @@
   </div>
 </template>
 
+
+
+
+
+
+
+
 <style lang="scss" scoped>
-    
     .overlay {
       position: absolute;
       z-index: 98;

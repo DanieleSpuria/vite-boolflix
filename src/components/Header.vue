@@ -25,6 +25,13 @@
   }
 </script>
 
+
+
+
+
+
+
+
 <template>
   <header>
     <div class="container">
@@ -46,8 +53,14 @@
   </header>
 </template>
 
-<style lang="scss" scoped>
 
+
+
+
+
+
+
+<style lang="scss" scoped>
   header {
     position: fixed;
     top: 0;

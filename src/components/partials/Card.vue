@@ -22,14 +22,19 @@
   }
 </script>
 
+
+
+
+
+
+
+
 <template>
   <div
     class="col"
     v-for="(card, id) of store.list"
     :key="id"
   >
-
-
     <div class="card" @click="click(card)">
       <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="poster">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
@@ -42,8 +47,14 @@
  </div>
 </template>
 
-<style lang="scss" scoped>
 
+
+
+
+
+
+
+<style lang="scss" scoped>
   .col {
     width: calc(100% / 5);
     padding: 20px 5px;

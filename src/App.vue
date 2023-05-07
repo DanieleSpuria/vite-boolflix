@@ -34,73 +34,79 @@
           store.totalPage = result.data.total_pages;
           store.load = true;
           store.search = true
-          console.log(store.list.length);
         })
       },
 
-      homeApi() {
-        store.search = false;
-        axios.get(store.pop + '&page=' + this.randomNumber(1, 500))
-        .then(result => {
-          store.homePop = result.data.results;
-        })
-
-        axios.get(store.genre + 878 + '&page=' + this.randomNumber(1, 500)) 
-        .then(result => {
-          store.home1 = result.data.results;
-        })
-
-        axios.get(store.genre + 80 + '&page=' + this.randomNumber(1, 500)) 
-        .then(result => {
-          store.home2 = result.data.results;
-        })
-
-        axios.get(store.genre + 99 + '&page=' + this.randomNumber(1, 500)) 
-        .then(result => {
-          store.home3 = result.data.results;
-        })
-
-        axios.get(store.genre + 27 + '&page=' + this.randomNumber(1, 500)) 
-        .then(result => {
-          store.home4 = result.data.results;
-        })
-
-        axios.get(store.genre + 14 + '&page=' + this.randomNumber(1, 500)) 
-        .then(result => {
-          store.home5 = result.data.results;
-        })
-
-
-        // store.home.forEach(n => {
-        //   axios.get(store.genre + n.genre + '&page=' + this.randomNumber(1, 500)) 
-        //     .then(result => {
-        //     n.list = result.data.results;
-        //     console.log(store.home);
-        //   })
+      getPop() {
+        // axios.get(this.api(store.homePop))
+        // .then(result => {
+        //   store.list = result.data.results;
+        //   store.totalPage = result.data.total_pages;
+        //   store.load = true;
+        //   store.search = true
         // })
-
-        window.scrollTo(0,0);
-        store.load = true;
+        console.log('eccolo');
       },
 
       randomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
       },
+
+      genre() {
+        axios.get(store.listGenre)
+        .then(result => {
+          store.arrayGenre = result.data.genres;
+        })
+      },
+
+      homeGenre() {
+        store.search = false;
+        axios.get(store.pop + '&page=' + this.randomNumber(1, 500))
+        .then(result => {
+          store.homePop = result.data.results;
+        });
+
+        this.genre();
+
+        store.arrayGenre.forEach((genres, i) => {
+          axios.get(store.genre + genres.id + '&page=' + this.randomNumber(1, 500)) 
+          .then(result => {
+            store.homeGenre[`${genres.name}`] = result.data.results;
+          })
+        });
+
+        window.scrollTo(0,0);
+        store.load = true;
+      }
     },
 
     mounted() {
-      this.homeApi()
+      this.homeGenre()
     }
   }
 </script>
 
+
+
+
+
+
+
+
 <template>
   <ClickCard :card="store.selectCard" v-if="store.clickCard" @keyup.esc="store.clickCard = false"/>
 
-  <Header @search="getApi()" @reset="homeApi()"/>
-  <Home v-if="!store.search && store.load"/>
+  <Header @search="getApi()" @reset="homeGenre()"/>
+  <Home v-if="!store.search && store.load" @pop="getPop()"/>
   <Main v-else @nextPrev="getApi()"/>
 </template>
+
+
+
+
+
+
+
 
 <style lang="scss">
   @import '../src/assets/scss/main.scss';
