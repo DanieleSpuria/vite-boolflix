@@ -2,6 +2,7 @@
   import Header from './components/Header.vue';
   import Home from './components/Home.vue';
   import Main from './components/Main.vue';
+  import ClickCard from './components/partials/ClickCard.vue';
   import axios from 'axios';
   import {store} from './assets/js/store';
   export default {
@@ -10,7 +11,8 @@
     components: {
     Header,
     Home,
-    Main
+    Main, 
+    ClickCard
     },
 
     data() {
@@ -92,6 +94,8 @@
 </script>
 
 <template>
+  <ClickCard :card="store.selectCard" v-if="store.clickCard" @keyup.esc="store.clickCard = false"/>
+
   <Header @search="getApi()" @reset="homeApi()"/>
   <Home v-if="!store.search && store.load"/>
   <Main v-else @nextPrev="getApi()"/>

@@ -1,12 +1,7 @@
 <script>
   import {store} from '../../assets/js/store';
-  import ClickCard from './ClickCard.vue';
   export default {
     name: 'Card', 
-
-    components: {
-      ClickCard
-    },
 
     data() {
       return {
@@ -28,9 +23,6 @@
 </script>
 
 <template>
-  <ClickCard :card="store.selectCard" v-if="store.clickCard"   @keyup.esc="store.clickCard = false"/>
-
-
   <div
     class="col"
     v-for="(card, id) of store.list"
@@ -45,24 +37,6 @@
       <div class="hover">
         <h3 v-if="store.select === 'movie'">{{ card.title }}</h3>
         <h3 v-if="store.select === 'tv'">{{ card.name}}</h3>
-        <h4
-          v-if="card.original_title != card.title && store.select === 'movie'"
-        >{{ card.original_title }}</h4>
-        <h4
-          v-if="card.original_name != card.name && store.select === 'tv'"
-        >{{ card.original_name }}</h4>
-        <img
-          class="img"
-          v-if="getImage(card.original_language).includes(card.original_language)"
-          :src="getImage(card.original_language)"
-          :alt="card.original_language"
-        >
-        <span v-else>{{ card.original_language }}</span>
-        <div class="star">
-          <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
-          <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
-        </div>
-        <p>{{ card.overview }}</p>
       </div>
     </div>
  </div>
@@ -80,23 +54,16 @@
       overflow: hidden;
       border-radius: 5px;
       cursor: pointer;
-
-      &:hover .hover{
-          display: flex;
-        }
       
       .hover {
-        display: none;
-        flex-direction: column;
-        align-items: center;
         position:absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 10px ;
-        color: white;
-        background-color: rgba(#000000, .7);
+          bottom: 0;
+          left: 0;
+          padding: 20px 50px 5px 5px;
+          font-size: 12px;
+          color: white;
+          background-color: rgba(#da1f2b, .6);
+          border-top-right-radius: 100%;
         
         .img {
           width: 12%;

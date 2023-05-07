@@ -46,18 +46,20 @@
 </template>
 
 <style lang="scss" scoped>
+
   header {
     position: fixed;
     top: 0;
-    z-index: 99;
+    z-index: 90;
     width: 100%;
-    background-color: #141414;
+    // background-color: #141414;
+
 
     .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 5px;
+      padding: 20px 0;
     }
 
     img {
@@ -71,5 +73,9 @@
       margin-left: 2px;
       cursor: pointer;
     }
+  }
+
+  .black {
+    background-color: 141414;
   }
 </style>

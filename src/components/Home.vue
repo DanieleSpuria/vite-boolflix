@@ -1,6 +1,5 @@
 <script>
   import HomeCard from './partials/HomeCard.vue';
-  import ClickCard from './partials/ClickCard.vue'
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   import 'swiper/swiper-bundle.css'
   import {store} from '../assets/js/store';
@@ -10,7 +9,6 @@
 
     components: {
       HomeCard,
-      ClickCard,
       Swiper,
       SwiperSlide
     },
@@ -34,6 +32,7 @@
       click(c) {
         store.selectCard = c;
         store.clickCard = true;
+        window.scrollTo(0,0);
       },
     },
 
@@ -46,21 +45,17 @@
 
 <template>
   <div class="home">
-    <div class="container">
+    <div class="jumbotron"  @click="click(store.homePop[random])">
+      <img v-if="store.homePop[random].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[random].backdrop_path" alt="backdrop">
+      <img v-else :src="getImage('no-photo')" alt="no-photo">
 
-      <ClickCard :card="store.selectCard" v-if="store.clickCard" @keyup.esc="store.clickCard = false"/>
-
-      <div class="jumbotron"  @click="click(store.homePop[random])">
-        <img v-if="store.homePop[random].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[random].backdrop_path" alt="backdrop">
-        <img v-else :src="getImage('no-photo')" alt="no-photo">
-
-        <div class="hover-jumbo">
-          <h1>{{ store.homePop[random].title }}</h1>
-        </div>
+      <div class="hover-jumbo">
+        <h1>{{ store.homePop[random].title }}</h1>
       </div>
+    </div>
 
 
-
+    <div class="container">
       <div class="box">
         <h3>Popolari</h3>
         <div class="row"> 
@@ -72,20 +67,7 @@
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
 
                 <div class="hover">
-                  <h3>{{ card.title }}</h3>
-                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
-                  <img
-                    class="img"
-                    v-if="getImage(card.original_language).includes(card.original_language)"
-                    :src="getImage(card.original_language)"
-                    :alt="card.original_language"
-                  >
-                  <span v-else>{{ card.original_language }}</span>
-                  <div class="star">
-                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
-                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
-                  </div>
-                  <p>{{ card.overview }}</p>
+                  <h4>{{ card.title }}</h4>
                 </div>
               </div>
             </div>
@@ -107,20 +89,7 @@
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
 
                 <div class="hover">
-                  <h3>{{ card.title }}</h3>
-                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
-                  <img
-                    class="img"
-                    v-if="getImage(card.original_language).includes(card.original_language)"
-                    :src="getImage(card.original_language)"
-                    :alt="card.original_language"
-                  >
-                  <span v-else>{{ card.original_language }}</span>
-                  <div class="star">
-                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
-                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
-                  </div>
-                  <p>{{ card.overview }}</p>
+                  <h4>{{ card.title }}</h4>
                 </div>
               </div>
             </div>
@@ -142,20 +111,7 @@
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
 
                 <div class="hover">
-                  <h3>{{ card.title }}</h3>
-                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
-                  <img
-                    class="img"
-                    v-if="getImage(card.original_language).includes(card.original_language)"
-                    :src="getImage(card.original_language)"
-                    :alt="card.original_language"
-                  >
-                  <span v-else>{{ card.original_language }}</span>
-                  <div class="star">
-                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
-                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
-                  </div>
-                  <p>{{ card.overview }}</p>
+                  <h4>{{ card.title }}</h4>
                 </div>
               </div>
             </div>
@@ -177,20 +133,7 @@
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
 
                 <div class="hover">
-                  <h3>{{ card.title }}</h3>
-                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
-                  <img
-                    class="img"
-                    v-if="getImage(card.original_language).includes(card.original_language)"
-                    :src="getImage(card.original_language)"
-                    :alt="card.original_language"
-                  >
-                  <span v-else>{{ card.original_language }}</span>
-                  <div class="star">
-                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
-                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
-                  </div>
-                  <p>{{ card.overview }}</p>
+                  <h4>{{ card.title }}</h4>
                 </div>
               </div>
             </div>
@@ -212,20 +155,7 @@
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
 
                 <div class="hover">
-                  <h3>{{ card.title }}</h3>
-                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
-                  <img
-                    class="img"
-                    v-if="getImage(card.original_language).includes(card.original_language)"
-                    :src="getImage(card.original_language)"
-                    :alt="card.original_language"
-                  >
-                  <span v-else>{{ card.original_language }}</span>
-                  <div class="star">
-                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
-                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
-                  </div>
-                  <p>{{ card.overview }}</p>
+                  <h4>{{ card.title }}</h4>
                 </div>
               </div>
             </div>
@@ -247,20 +177,7 @@
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
 
                 <div class="hover">
-                  <h3>{{ card.title }}</h3>
-                  <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
-                  <img
-                    class="img"
-                    v-if="getImage(card.original_language).includes(card.original_language)"
-                    :src="getImage(card.original_language)"
-                    :alt="card.original_language"
-                  >
-                  <span v-else>{{ card.original_language }}</span>
-                  <div class="star">
-                    <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
-                    <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
-                  </div>
-                  <p>{{ card.overview }}</p>
+                  <h4>{{ card.title }}</h4>
                 </div>
               </div>
             </div>
@@ -275,14 +192,12 @@
 <style lang="scss" scoped>
 
   .home {
-    margin-top: 100px;
-    padding: 0 10px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     color: white;
 
     .jumbotron {
       position: relative;
-      height: 450px;
+      height: 500px;
       border-radius: 5px;
       overflow: hidden;
       cursor: pointer;
@@ -290,19 +205,19 @@
       .hover-jumbo {
         position: absolute;
         bottom: 2%;
-        left: 1%;
+        left: 5%;
       }
     }
 
     .box {
-      margin-top: 20px;
+      margin-top: 40px;
 
       h3 {
-        margin-bottom: 10px;
-      }
+          margin-bottom: 10px;
+        }
 
       .row {
-
+        
         .col {
 
           .card {
@@ -311,33 +226,26 @@
             overflow: hidden;  
             cursor: pointer;
             position: relative;
- 
-              &:hover .hover{
-                  display: flex;
-                }
-               
-              .hover {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                position:absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                padding: 10px ;
-                color: white;
-                background-color: rgba(#000000, .7);
- 
-                .img {
-                  width: 12%;
-                }
-               
-                p {
-                  text-align: justify;
-                  overflow: scroll;
-                }
-              }         
+  
+            .hover {
+              position:absolute;
+              bottom: 0;
+              left: 0;
+              padding: 20px 50px 5px 5px;
+              font-size: 12px;
+              color: white;
+              background-color: rgba(#da1f2b, .6);
+              border-top-right-radius: 100%;
+
+              .img {
+                width: 12%;
+              }
+             
+              p {
+                text-align: justify;
+                overflow: scroll;
+              }
+            }         
           }
         }
       }
