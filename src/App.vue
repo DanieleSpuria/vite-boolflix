@@ -78,7 +78,7 @@
         //   })
         // })
 
-
+        window.scrollTo(0,0);
         store.load = true;
       },
 
