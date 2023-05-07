@@ -22,13 +22,17 @@
 </script>
 
 <template>
-  <div class="overlay" @click="store.clickCard = false">
+  <div class="overlay">
     <div class="cover">
       <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="poster">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
+      <font-awesome-icon
+        :icon="['far', 'circle-xmark']"
+        id="close"
+        @click="store.clickCard = false"
+      />
     </div>
     <div class="card"> 
-
       <div class="hover">
         <h2>{{ card.title }}</h2>
         <div class="sub">
@@ -72,8 +76,22 @@
       }
 
       .cover {
+        position: relative;
         border-radius: 10px 10px 0 0;
         overflow: hidden;
+
+        #close {
+          position: absolute;
+          top: 3%;
+          right: 2%;
+          font-size: 30px;
+          color: white;
+          cursor: pointer;
+
+          &:hover {
+            color: #da1f2b;
+          }
+        }
       }
       
       .card {
