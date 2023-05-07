@@ -59,7 +59,7 @@
     
     .overlay {
       position: absolute;
-      z-index: 99;
+      z-index: 98;
       width: 100%;
       height: 100%;
       padding: 50px;
@@ -70,12 +70,17 @@
         width: 70%;
         margin: 0 auto;
       }
-  
+
+      .cover {
+        border-radius: 10px 10px 0 0;
+        overflow: hidden;
+      }
+      
       .card {
-        
         padding: 50px;
         color: white;
         background-color: #181818;
+        border-radius: 0 0 10px 10px;
         
         .languages,
         .star,
