@@ -23,20 +23,28 @@
 
 <template>
   <div class="overlay" @click="store.clickCard = false">
-    <div class="card"> 
+    <div class="cover">
       <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="poster">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
+    </div>
+    <div class="card"> 
 
       <div class="hover">
-        <h3>{{ card.title }}</h3>
-        <h4 v-if="card.original_title != card.title">Titolo originale: {{ card.original_title }}</h4>
-        <img
-          class="img"
-          v-if="getImage(card.original_language).includes(card.original_language)"
-          :src="getImage(card.original_language)"
-          :alt="card.original_language"
-        >
-        <span v-else>{{ card.original_language }}</span>
+        <h2>{{ card.title }}</h2>
+        <div class="sub">
+          <span v-if="card.original_title != card.title">Titolo originale: </span>
+          <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
+        </div>
+        <div class="languages">
+          <span>Lingua originale:</span> 
+          <img
+            class="img"
+            v-if="getImage(card.original_language).includes(card.original_language)"
+            :src="getImage(card.original_language)"
+            :alt="card.original_language"
+          >
+          <span v-else>{{ card.original_language }}</span>
+        </div>
         <div class="star">
           <font-awesome-icon :icon="['fas', 'star']" v-for="n of Math.ceil(card.vote_average.toFixed(0) / 2)" :key="n"/>
           <font-awesome-icon :icon="['far', 'star']" v-for="n of (5 - Math.ceil(card.vote_average.toFixed(0) / 2))" :key="n"/> 
@@ -56,16 +64,35 @@
       height: 100%;
       padding: 50px;
       background-color: rgba(#000000, .8);
-  
+
+      .cover,
       .card {
         width: 70%;
         margin: 0 auto;
+      }
+  
+      .card {
+        
         padding: 50px;
         color: white;
         background-color: #181818;
+        
+        .languages,
+        .star,
+        .sub,
+        p {
+          margin-top: 20px
+        }
   
         .img {
-          width: 2%;
+          width: 3%;
+        }
+
+        span,
+        h4,
+        .languages img {
+          display: inline-block;
+          margin-right: 8px;
         }
       }
     }
