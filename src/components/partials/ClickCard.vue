@@ -85,7 +85,7 @@
           top: 3%;
           right: 2%;
           font-size: 30px;
-          color: white;
+          color: lightgrey;
           cursor: pointer;
 
           &:hover {

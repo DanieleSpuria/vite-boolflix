@@ -19,6 +19,7 @@
       this.$emit ('search');
       this.viewSelect = '';
       this.input = ''
+      console.log(store.value);
     }
    }
   }

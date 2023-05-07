@@ -34,6 +34,7 @@
           store.totalPage = result.data.total_pages;
           store.load = true;
           store.search = true
+          console.log(store.list.length);
         })
       },
 
