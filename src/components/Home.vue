@@ -29,8 +29,8 @@
         this.random = Math.floor(Math.random() * (store.homePop.length + 1));
       },
 
-      click(c) {
-        store.selectCard = c;
+      click(card) {
+        store.selectCard = card;
         store.clickCard = true;
         window.scrollTo(0,0);
       },
@@ -52,7 +52,7 @@
 <template>
   <div class="home">
     <div class="jumbotron"  @click="click(store.homePop[random])">
-      <img v-if="store.homePop[random].backdrop_path" :src="store.urlImg + 'w1280' + store.homePop[random].backdrop_path" alt="backdrop">
+      <img v-if="store.homePop[random].backdrop_path" :src="store.apiImg + 'w1280' + store.homePop[random].backdrop_path" alt="backdrop">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
 
       <div class="hover-jumbo">
@@ -69,7 +69,7 @@
            <SwiperSlide v-for="(card, id) in store.homePop" :key="id">
             <div class="col" @click="click(card)">
               <div class="card">
-                <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
+                <img v-if="card.backdrop_path" :src="store.apiImg + 'w780' + card.backdrop_path" alt="backdrop">
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
 
                 <div class="hover">
@@ -91,7 +91,7 @@
              <SwiperSlide v-for="(card, id) in genre" :key="id">
               <div class="col" @click="click(card)">
                 <div class="card">
-                  <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="backdrop">
+                  <img v-if="card.backdrop_path" :src="store.apiImg + 'w780' + card.backdrop_path" alt="backdrop">
                   <img v-else :src="getImage('no-photo')" alt="no-photo">
 
                   <div class="hover">

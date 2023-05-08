@@ -18,8 +18,8 @@
         return new URL (`../../assets/img/${img}.png`, import.meta.url).href;
       },
 
-      click(c) {
-        store.selectCard = c;
+      click(card) {
+        store.selectCard = card;
         store.clickCard = true;
       }
     }

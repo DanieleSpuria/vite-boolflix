@@ -23,60 +23,43 @@
 
     methods: {
       getApi(type) {
+        store.search = true;
         let apiUrl = store.apiUrl + type;
         store.apiParams.query = store.valueInput;
         axios.get(apiUrl, {params: store.apiParams})
         .then(result => {
           store[type] = result.data.results;
           store.totalPages = result.data.total_pages;
-          console.log(store[type].length);
         });
-        store.search = true;
       },
 
+      genre() {
+        axios.get(store.apiGenresList, {params: store.apiParams})
+        .then(result => {
+          store.genres = result.data.genres;
+        })
+      },
 
+      homeApi() {
+        store.search = false;
+        window.scrollTo(0,0);
+        store.apiParams.page = this.randomNumber(1, 500);
+        axios.get( store.apiPop , {params: store.apiParams})
+        .then(result => {
+          store.homePop = result.data.results;
+        });
+        
+        this.genre();
 
-      // api(select) {
-      //   if (select === 'movie') return store.api = store.movie + store.value + '&page=' + store.page;
-      //   if (select === 'tv') return store.api = store.tv + store.value + '&page=' + store.page;
-      // },
-
-      // getApi() {
-      //   axios.get(this.api(store.select))
-      //   .then(result => {
-      //     store.list = result.data.results;
-      //     store.totalPage = result.data.total_pages;
-      //     store.load = true;
-      //     store.search = true
-      //   })
-      // },
-
-      // genre() {
-      //   axios.get(store.listGenre)
-      //   .then(result => {
-      //     store.arrayGenre = result.data.genres;
-      //   })
-      // },
-
-      // homeGenre() {
-      //   store.search = false;
-      //   axios.get(store.pop + '&page=' + this.randomNumber(1, 500))
-      //   .then(result => {
-      //     store.homePop = result.data.results;
-      //   });
-
-      //   this.genre();
-
-      //   store.arrayGenre.forEach((genres) => {
-      //     axios.get(store.genre + genres.id + '&page=' + this.randomNumber(1, 500)) 
-      //     .then(result => {
-      //       store.homeGenre[`${genres.name}`] = result.data.results;
-      //     })
-      //   });
-
-      //   window.scrollTo(0,0);
-      //   store.load = true;
-      // },
+          // store.genres.forEach((genre) => {
+          //   axios.get(store.genre + genre.id + '&page=' + this.randomNumber(1, 500)) 
+          //   .then(result => {
+          //     store.homeGenre[`${genre.name}`] = result.data.results;
+          //   })
+          // });
+        
+        // store.load = true;
+      },
 
       // open() {
       //   // axios.get(this.api(store.homePop))
@@ -89,14 +72,13 @@
       //   console.log('eccolo');
       // },
 
-      // randomNumber(min, max) {
-      //   return Math.floor(Math.random() * (max - min + 1) + min);
-      // }
+      randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
     },
 
     mounted() {
-      // this.homeGenre()
-      // this.getApi()
+      // this.homeApi()
     }
   }
 </script>
@@ -109,10 +91,10 @@
 
 
 <template>
-  <ClickCard :card="store.selectCard" v-if="store.clickCard" @keyup.esc="store.clickCard = false"/>
+  <ClickCard :card="store.selectCard" v-if="store.clickCard"/>
 
-  <Header @search="getApi(store.valueSelect)" @reset="homeGenre()"/>
-  <!-- <Home v-if="!store.search && store.load" @open="open()"/> -->
+  <Header @search="getApi(store.valueSelect)" @reset="homeApi()"/>
+  <!-- <Home v-if="!store.search" @open="open()"/> -->
   <SearchContainer
     v-if="store.search"
     @nextPrev="getApi(store.valueSelect)"

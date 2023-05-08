@@ -15,7 +15,7 @@
     search() {
       store.valueSelect = this.select;
       store.valueInput = this.input;
-      store.page = 1;
+      store.apiParams.page = 1;
       this.$emit ('search');
       this.select = '';
       this.input = ''
