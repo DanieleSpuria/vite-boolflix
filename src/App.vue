@@ -47,17 +47,20 @@
         axios.get( store.apiPop , {params: store.apiParams})
         .then(result => {
           store.homePop = result.data.results;
+          console.log(store.homePop);
         });
         
         this.genre();
 
-          // store.genres.forEach((genre) => {
-          //   axios.get(store.genre + genre.id + '&page=' + this.randomNumber(1, 500)) 
-          //   .then(result => {
-          //     store.homeGenre[`${genre.name}`] = result.data.results;
-          //   })
-          // });
-        
+        store.genres.forEach((genre) => {
+          store.apiParams.genre = genre.id;
+          axios.get(store.apiGenre, {params: store.apiParams}) 
+          .then(result => {
+            store.homeGenres[`${genre.name}`] = result.data.results;
+            console.log(store.homeGenres);
+          })
+        });
+      
         // store.load = true;
       },
 
@@ -78,7 +81,7 @@
     },
 
     mounted() {
-      // this.homeApi()
+      this.homeApi()
     }
   }
 </script>
