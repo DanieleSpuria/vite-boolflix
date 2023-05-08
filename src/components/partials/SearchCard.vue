@@ -1,7 +1,11 @@
 <script>
   import {store} from '../../assets/js/store';
   export default {
-    name: 'Card', 
+    name: 'SearchCard', 
+
+    props: {
+      card: Object
+    },
 
     data() {
       return {
@@ -30,18 +34,13 @@
 
 
 <template>
-  <div
-    class="col"
-    v-for="(card, id) of store.list"
-    :key="id"
-  >
+  <div class="col">
     <div class="card" @click="click(card)">
       <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="poster">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
 
       <div class="hover">
-        <h3 v-if="store.select === 'movie'">{{ card.title }}</h3>
-        <h3 v-if="store.select === 'tv'">{{ card.name}}</h3>
+        <h3>{{ card.title || card.name}}</h3>
       </div>
     </div>
  </div>

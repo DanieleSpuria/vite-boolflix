@@ -1,12 +1,16 @@
 <script>
-  import Card from './partials/Card.vue';
+  import SearchCard from './partials/SearchCard.vue';
   import {store} from '../assets/js/store';
   export default {
-   name: 'Main',
+   name: 'SearchContainer',
    
    components: {
-    Card
+    SearchCard
    },
+
+   props: {
+      type: String
+    },
 
    data() {
     return {
@@ -32,10 +36,10 @@
 
 <template>
   <main>
-    <span v-if="store.list.length === 0">Non è stato ottenuto nessun risultato</span>
+    <!-- <span v-if="store.list.length === 0">Non è stato ottenuto nessun risultato</span> -->
     <!-- <span v-else-if="store.value === ''">Non è stato ottenuto nessun risultato!!!!</span> -->
 
-    <div v-else class="box">
+    <div class="box">
       <div class="btn">
         <font-awesome-icon
           :icon="['fas', 'angle-left']"
@@ -44,9 +48,13 @@
           class="arrow"
         />
       </div>
-  
+      
       <div class="row">
-        <Card/>
+        <SearchCard 
+          v-for="(card) of store.movie"
+          :key="card.id" 
+          :card="card"
+        />
       </div>
   
       <div class="btn">

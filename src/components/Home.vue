@@ -36,7 +36,6 @@
       },
     },
 
-
     mounted() {
       this.randomNumber()
     }
@@ -64,7 +63,7 @@
 
     <div class="container">
       <div class="box">
-        <h3 @click="$emit ('pop')">Popolari</h3>
+        <h3 @click="$emit ('open')">Popolari</h3>
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
            <SwiperSlide v-for="(card, id) in store.homePop" :key="id">
@@ -86,7 +85,7 @@
 
       <div class="genre" v-for="(genre, id) in store.homeGenre" :key="id">
         <div class="box">
-          <h3>{{id}}</h3>
+          <h3 @click="$emit ('open')">{{id}}</h3>
           <div class="row"> 
             <Swiper :slidesPerView="5" :spaceBetween="10">
              <SwiperSlide v-for="(card, id) in genre" :key="id">
