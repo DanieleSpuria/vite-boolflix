@@ -34,13 +34,11 @@
       },
       
       homePop() {
-        store.search = false;
-        window.scrollTo(0,0);
         store.apiParams.page = this.randomNumber(1, 500);
         axios.get( store.apiPop , {params: store.apiParams})
         .then(result => {
           store.homePop = result.data.results;
-          console.log(store.homePop);
+          console.log('pop',store.homePop);
         });
       },
       
@@ -48,7 +46,6 @@
         axios.get(store.apiGenresList, {params: store.apiParams})
         .then(result => {
           store.genres = result.data.genres;
-          console.log(store.genres);
         })
       },
 
@@ -63,12 +60,24 @@
         });
       },
 
+      // async homeGenre() {
+      //   for (const genre of store.genres) {
+      //     store.apiParams.genre = genre.id;
+      //     const result = await axios.get(store.apiGenre, {params: store.apiParams});
+      //     store.homeGenres[`${genre.name}`] = result.data.results;
+      //   }
+      //   console.log(store.homeGenres);
+      // },
+
       homeApi() {
+        store.search = false;
+        window.scrollTo(0,0);
+
         this.homePop();
         
         this.genre();
 
-        // this.homeGenre();
+        this.homeGenre();
       },
 
       // open() {
@@ -104,7 +113,7 @@
   <ClickCard :card="store.selectCard" v-if="store.clickCard"/>
 
   <Header @search="getApi(store.valueSelect)" @reset="homeApi()"/>
-  <Home v-if="!store.search" @open="open()"/>
+  <!-- <Home v-if="!store.search" @open="open()"/> -->
   <SearchContainer
     v-if="store.search"
     @nextPrev="getApi(store.valueSelect)"

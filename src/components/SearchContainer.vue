@@ -37,7 +37,7 @@
 <template>
   <main>
     <div class="error">
-      <!-- <span v-if="store[type].length === 0">Non è stato ottenuto nessun risultato</span> -->
+      <span v-if="store[type].length === 0">Non è stato ottenuto nessun risultato</span>
       <!-- <span v-if="store.valueSelect === ''">Non è stato ottenuto nessun risultato!!!!</span> -->
     </div>
 

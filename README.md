@@ -52,3 +52,6 @@ Andando con il mouse sopra una card (on hover), appaiono le informazioni aggiunt
 - hover alle card aggiundendo la descrizione
 
 
+La home page ha dei problemi che non sono riuscito a comprendere e risolvere, quindi l'ho disattiva. Funziona solo la ricerca di film e serie tv.
+
+

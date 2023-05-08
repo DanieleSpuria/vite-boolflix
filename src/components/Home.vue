@@ -25,8 +25,8 @@
         return new URL (`../assets/img/${img}.png`, import.meta.url).href;
       },
 
-      randomNumber() {
-        this.random = Math.floor(Math.random() * (store.homePop.length + 1));
+      randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
       },
 
       click(card) {
@@ -51,12 +51,12 @@
 
 <template>
   <div class="home">
-    <div class="jumbotron"  @click="click(store.homePop[random])">
-      <img v-if="store.homePop[random].backdrop_path" :src="store.apiImg + 'w1280' + store.homePop[random].backdrop_path" alt="backdrop">
+    <div class="jumbotron"  @click="click(store.homePop[0])">
+      <img v-if="store.homePop[0].backdrop_path" :src="store.apiImg + 'w1280' + store.homePop[0].backdrop_path" alt="backdrop">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
 
       <div class="hover-jumbo">
-        <h1>{{ store.homePop[random].title }}</h1>
+        <h1>{{ store.homePop[0].title }}</h1>
       </div>
     </div>
 
@@ -66,14 +66,14 @@
         <h3 @click="$emit ('open')">Popolari</h3>
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
-           <SwiperSlide v-for="(card, id) in store.homePop" :key="id">
-            <div class="col" @click="click(card)">
+           <SwiperSlide v-for="(filmPop, filmPopId) in store.homePop" :key="filmPopId">
+            <div class="col" @click="click(filmPop)">
               <div class="card">
-                <img v-if="card.backdrop_path" :src="store.apiImg + 'w780' + card.backdrop_path" alt="backdrop">
+                <img v-if="filmPop.backdrop_path" :src="store.apiImg + 'w780' + filmPop.backdrop_path" alt="backdrop">
                 <img v-else :src="getImage('no-photo')" alt="no-photo">
 
                 <div class="hover">
-                  <h4>{{ card.title }}</h4>
+                  <h4>{{ filmPop.title }}</h4>
                 </div>
               </div>
             </div>
@@ -83,12 +83,12 @@
       </div>
 
 
-      <div class="genre" v-for="(genre, id) in store.homeGenres" :key="id">
+      <div class="genre" v-for="(genre, genreId) in store.homeGenres" :key="genreId">
         <div class="box">
-          <h3 @click="$emit ('open')">{{id}}</h3>
+          <h3 @click="$emit ('open')">{{genreId}}</h3>
           <div class="row"> 
             <Swiper :slidesPerView="5" :spaceBetween="10">
-             <SwiperSlide v-for="(card, id) in genre" :key="id">
+             <SwiperSlide v-for="(card, cardId) in genre" :key="cardId"> 
               <div class="col" @click="click(card)">
                 <div class="card">
                   <img v-if="card.backdrop_path" :src="store.apiImg + 'w780' + card.backdrop_path" alt="backdrop">

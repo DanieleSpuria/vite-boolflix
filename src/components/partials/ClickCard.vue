@@ -41,10 +41,10 @@
     </div>
     <div class="card"> 
       <div class="hover">
-        <h2>{{ card.title }}</h2>
+        <h2>{{ card.title || card.name}}</h2>
         <div class="sub">
           <span v-if="card.original_title != card.title">Titolo originale: </span>
-          <h4 v-if="card.original_title != card.title">{{ card.original_title }}</h4>
+          <h4 v-if="card.original_title != card.title">{{ card.original_title || card.original_name}}</h4>
         </div>
         <div class="languages">
           <span>Lingua originale:</span> 
