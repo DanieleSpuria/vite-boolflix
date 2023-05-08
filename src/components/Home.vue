@@ -83,7 +83,7 @@
       </div>
 
 
-      <div class="genre" v-for="(genre, id) in store.homeGenre" :key="id">
+      <div class="genre" v-for="(genre, id) in store.homeGenres" :key="id">
         <div class="box">
           <h3 @click="$emit ('open')">{{id}}</h3>
           <div class="row"> 

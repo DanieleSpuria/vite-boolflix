@@ -32,15 +32,8 @@
           store.totalPages = result.data.total_pages;
         });
       },
-
-      genre() {
-        axios.get(store.apiGenresList, {params: store.apiParams})
-        .then(result => {
-          store.genres = result.data.genres;
-        })
-      },
-
-      homeApi() {
+      
+      homePop() {
         store.search = false;
         window.scrollTo(0,0);
         store.apiParams.page = this.randomNumber(1, 500);
@@ -49,9 +42,17 @@
           store.homePop = result.data.results;
           console.log(store.homePop);
         });
-        
-        this.genre();
+      },
+      
+      genre() {
+        axios.get(store.apiGenresList, {params: store.apiParams})
+        .then(result => {
+          store.genres = result.data.genres;
+          console.log(store.genres);
+        })
+      },
 
+      homeGenre() {
         store.genres.forEach((genre) => {
           store.apiParams.genre = genre.id;
           axios.get(store.apiGenre, {params: store.apiParams}) 
@@ -60,8 +61,14 @@
             console.log(store.homeGenres);
           })
         });
-      
-        // store.load = true;
+      },
+
+      homeApi() {
+        this.homePop();
+        
+        this.genre();
+
+        // this.homeGenre();
       },
 
       // open() {
@@ -97,7 +104,7 @@
   <ClickCard :card="store.selectCard" v-if="store.clickCard"/>
 
   <Header @search="getApi(store.valueSelect)" @reset="homeApi()"/>
-  <!-- <Home v-if="!store.search" @open="open()"/> -->
+  <Home v-if="!store.search" @open="open()"/>
   <SearchContainer
     v-if="store.search"
     @nextPrev="getApi(store.valueSelect)"

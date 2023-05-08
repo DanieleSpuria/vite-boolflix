@@ -13,7 +13,6 @@ export const store = reactive({
     page: 1,
     with_genres: ''
   },
-  // page: 1,
   movie: [],
   tv: [],
   homePop: [],
