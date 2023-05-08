@@ -31,7 +31,7 @@
 <template>
   <div class="overlay">
     <div class="cover">
-      <img v-if="card.backdrop_path" :src="store.urlImg + 'w780' + card.backdrop_path" alt="poster">
+      <img v-if="card.backdrop_path" :src="store.apiImg + 'w780' + card.backdrop_path" alt="poster">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
       <font-awesome-icon
         :icon="['far', 'circle-xmark']"

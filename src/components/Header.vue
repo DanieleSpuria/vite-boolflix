@@ -7,17 +7,17 @@
     return {
       store,
       input: '',
-      viewSelect: ''
+      select: ''
     }
    },
 
    methods: {
     search() {
-      store.value = this.input;
-      store.select = this.viewSelect;
+      store.valueSelect = this.select;
+      store.valueInput = this.input;
       store.page = 1;
       this.$emit ('search');
-      this.viewSelect = '';
+      this.select = '';
       this.input = ''
     }
    }
@@ -36,7 +36,7 @@
     <div class="container">
       <img @click="$emit ('reset')" src="../assets/img/logo-boolflix.png" alt="logo">
       <div class="search-bar">
-        <select v-model="viewSelect">
+        <select v-model="select">
           <option value="">Seleziona</option>
           <option value="movie">Film</option>
           <option value="tv">SerieTv</option>

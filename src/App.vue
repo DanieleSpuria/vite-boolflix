@@ -24,12 +24,15 @@
     methods: {
       getApi(type) {
         let apiUrl = store.apiUrl + type;
+        store.apiParams.query = store.valueInput;
         axios.get(apiUrl, {params: store.apiParams})
         .then(result => {
           store[type] = result.data.results;
-        })
-      }
-
+          store.totalPages = result.data.total_pages;
+          console.log(store[type].length);
+        });
+        store.search = true;
+      },
 
 
 
@@ -93,7 +96,7 @@
 
     mounted() {
       // this.homeGenre()
-      this.getApi('movie')
+      // this.getApi()
     }
   }
 </script>
@@ -108,9 +111,13 @@
 <template>
   <ClickCard :card="store.selectCard" v-if="store.clickCard" @keyup.esc="store.clickCard = false"/>
 
-  <Header @search="getApi()" @reset="homeGenre()"/>
+  <Header @search="getApi(store.valueSelect)" @reset="homeGenre()"/>
   <!-- <Home v-if="!store.search && store.load" @open="open()"/> -->
-  <SearchContainer @nextPrev="getApi()" type="movie"/>
+  <SearchContainer
+    v-if="store.search"
+    @nextPrev="getApi(store.valueSelect)"
+    :type="store.valueSelect"
+  />
 </template>
 
 

@@ -36,22 +36,24 @@
 
 <template>
   <main>
-    <!-- <span v-if="store.list.length === 0">Non è stato ottenuto nessun risultato</span> -->
-    <!-- <span v-else-if="store.value === ''">Non è stato ottenuto nessun risultato!!!!</span> -->
+    <div class="error">
+      <span v-if="store[type].length === 0">Non è stato ottenuto nessun risultato</span>
+      <!-- <span v-if="store.valueSelect === ''">Non è stato ottenuto nessun risultato!!!!</span> -->
+    </div>
 
     <div class="box">
       <div class="btn">
         <font-awesome-icon
           :icon="['fas', 'angle-left']"
-          v-if="store.page > 1"
-          @click="nextPrev(store.page--)"
+          @click="nextPrev(store.apiParams.page--)"
+          v-if="store.apiParams.page > 1"
           class="arrow"
         />
       </div>
       
       <div class="row">
         <SearchCard 
-          v-for="(card) of store.movie"
+          v-for="(card) of store[type]"
           :key="card.id" 
           :card="card"
         />
@@ -60,8 +62,8 @@
       <div class="btn">
         <font-awesome-icon
           :icon="['fas', 'angle-right']"
-          v-if="store.page != store.totalPage && store.load"
-          @click="nextPrev(store.page++)"
+          @click="nextPrev(store.apiParams.page++)"
+          v-if="store.apiParams.page != store.totalPages"
           class="arrow"
         />
       </div>
@@ -78,14 +80,19 @@
 
 <style lang="scss" scoped>
   main {
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
 
-    span {
-      margin: 200px auto;
-      font-size: 20px;
-      color: #db202c
+    .error {
+      text-align: center;
+
+      span {
+        margin: 200px auto;
+        font-size: 20px;
+        color: #db202c
+      }
     }
+
 
     .box {
       display: flex;
