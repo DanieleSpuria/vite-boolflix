@@ -29,15 +29,15 @@
         return Math.floor(Math.random() * (max - min + 1) + min);
       },
 
-      click(card) {
-        store.selectCard = card;
+      click(selectCard) {
+        store.selectCard = selectCard;
         store.clickCard = true;
         window.scrollTo(0,0);
       },
     },
 
     mounted() {
-      this.randomNumber()
+      this.random = this.randomNumber(store.homePop.length, 0);
     }
   }
 </script>
@@ -51,19 +51,19 @@
 
 <template>
   <div class="home">
-    <div class="jumbotron"  @click="click(store.homePop[0])">
-      <img v-if="store.homePop[0].backdrop_path" :src="store.apiImg + 'w1280' + store.homePop[0].backdrop_path" alt="backdrop">
+    <div class="jumbotron"  @click="click(store.homePop[random])">
+      <img v-if="store.homePop[random].backdrop_path" :src="store.apiImg + 'w1280' + store.homePop[random].backdrop_path" alt="backdrop">
       <img v-else :src="getImage('no-photo')" alt="no-photo">
 
       <div class="hover-jumbo">
-        <h1>{{ store.homePop[0].title }}</h1>
+        <h1>{{ store.homePop[random].title }}</h1>
       </div>
     </div>
 
 
     <div class="container">
       <div class="box">
-        <h3 @click="$emit ('open')">Popolari</h3>
+        <h3>Popolari</h3>
         <div class="row"> 
           <Swiper :slidesPerView="5" :spaceBetween="10">
            <SwiperSlide v-for="(filmPop, filmPopId) in store.homePop" :key="filmPopId">
@@ -85,7 +85,7 @@
 
       <div class="genre" v-for="(genre, genreId) in store.homeGenres" :key="genreId">
         <div class="box">
-          <h3 @click="$emit ('open')">{{genreId}}</h3>
+          <h3>{{genreId}}</h3>
           <div class="row"> 
             <Swiper :slidesPerView="5" :spaceBetween="10">
              <SwiperSlide v-for="(card, cardId) in genre" :key="cardId"> 

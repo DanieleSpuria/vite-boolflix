@@ -38,7 +38,6 @@
         axios.get( store.apiPop , {params: store.apiParams})
         .then(result => {
           store.homePop = result.data.results;
-          console.log('pop',store.homePop);
         });
       },
       
@@ -51,11 +50,11 @@
 
       homeGenre() {
         store.genres.forEach((genre) => {
-          store.apiParams.genre = genre.id;
+          store.apiParams.with_genres = genre.id;
+          store.apiParams.page = this.randomNumber(1, 500);
           axios.get(store.apiGenre, {params: store.apiParams}) 
           .then(result => {
             store.homeGenres[`${genre.name}`] = result.data.results;
-            console.log(store.homeGenres);
           })
         });
       },
@@ -113,7 +112,7 @@
   <ClickCard :card="store.selectCard" v-if="store.clickCard"/>
 
   <Header @search="getApi(store.valueSelect)" @reset="homeApi()"/>
-  <!-- <Home v-if="!store.search" @open="open()"/> -->
+  <!-- <Home v-if="!store.search"/> -->
   <SearchContainer
     v-if="store.search"
     @nextPrev="getApi(store.valueSelect)"

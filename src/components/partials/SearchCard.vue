@@ -21,6 +21,7 @@
       click(card) {
         store.selectCard = card;
         store.clickCard = true;
+        window.scrollTo(0,0);
       }
     }
   }
